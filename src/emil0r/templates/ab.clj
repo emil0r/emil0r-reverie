@@ -1,4 +1,4 @@
-(ns emil0r.templates.main
+(ns emil0r.templates.ab
   (:require [hiccup.page :refer [html5]]
             [emil0r.templates.common :as common]
             [emil0r.util :as util]
@@ -18,8 +18,8 @@
        (common/nav database dev? uri page)
        [:div.container
         [:div.row
-         [:div.col-md-12
-          (area a)]]]
+         [:div.col-md-6 (area a)]
+         [:div.col-md-6 (area b)]]]
        (common/footer page dev?)]])))
 
 (defn template-sidemenu [{:keys [uri] :as request} page properties params]
@@ -36,11 +36,13 @@
        [:div.container
         [:div.row
          [:div.col-md-2
-          (util/sidemenu database dev? uri page)]
+          (common/sidemenu database dev? uri page)]
          [:div.col-md-10
-          (area a)]]]
+          [:div.row
+           [:div.col-md-6 (area a)]
+           [:div.col-md-6 (area b)]]]]]
        (common/footer page dev?)]])))
 
 
-(deftemplate main template)
-(deftemplate main-sidemenu template-sidemenu)
+(deftemplate ab template)
+(deftemplate ab-sidemenu template-sidemenu)

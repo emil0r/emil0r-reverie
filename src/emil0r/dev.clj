@@ -24,8 +24,7 @@
                       :migrator path})
                    (array-map
                     ;;"migrations_<name-here>" "src/emil0r/objects/migrations/<name-here>/"
-                    ;;"migrations_raw" "src/emil0r/objects/migrations/raw/"
-                    ;;"migrations_text" "src/emil0r/objects/migrations/text/"
+                    "migrations_jumbatron" "src/emil0r/objects/migrations/jumbatron/"
                     ))]
     ;; IMPORTANT NOTE: this has destructive side effects in the sense
     ;; of wiping out previously applied migrations.
