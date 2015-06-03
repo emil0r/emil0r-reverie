@@ -1,0 +1,104 @@
+
+.video {
+    margin-bottom: 10px;
+    .description {
+        margin-top: 5px;
+        padding: 5px;
+        background-color: @royal-blue;
+        display: inline-block;
+        color: @white;
+        border-radius: 3px;
+    }
+    h3 {
+        span {
+            color: @primary;
+            margin-right: 5px;
+        }
+        margin: 5px 0 0 0;
+    }
+    .length {
+        span {
+            color: @primary;
+            margin-right: 5px;
+        }
+    }
+    .play {
+        position: relative;
+        display: inline-block;
+        &:hover {
+            cursor: pointer;
+            i.fa-play-circle-o {
+                text-shadow: 0 0 5px @white;
+            }
+        }
+        i.fa-play-circle-o {
+            position: absolute;
+            color: @gray-lighter;
+            background-color: fadeout(@primary, 30%);
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 40px;
+            left: 50%;
+            top: 50%;
+            margin: -25px 0 0 -25px;
+        }
+        i.fa-youtube {
+            position: absolute;
+            color: red;
+            font-size: 20px;
+            top: 5px;
+            left: 5px;
+            background-color: @white;
+            padding: 5px;
+        }
+    }
+}
+
+#player-container {
+    position: fixed;
+    width: 650px;
+    height: 445px;
+    background-color: @white;
+    z-index: 999999;
+    left: 50%;
+    top: 50%;
+    margin: -200px 0 0 -325px;
+    box-shadow: 0 1px 5px @black;
+    border-radius: 3px;
+    h2 {
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        line-height: 0;
+        padding-right: 45px;
+    }
+    .fa-times-circle {
+        font-size: 40px;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        color: @primary;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    #player {
+        width: 640px;
+        height: 390px;
+        background-color: @gray-lighter;
+        position: absolute;
+        bottom: 5px;
+        left: 5px;
+    }
+}
+
+@media all and (max-width: 650px) {
+    #player-container {
+        width: 100%;
+        left: 0;
+        margin-left: 0;
+        #player {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,28 @@
+.side-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+    li {
+        margin: 0;
+        padding: 0;
+        border-top: 1px @gray solid;
+        border-bottom: 1px @gray-dark solid;
+        &.active > a {
+            background-color: @primary - #111;
+            color: @white;
+        }
+        a {
+            background-color: @primary;
+            color: #222;
+            padding: 5px 10px;
+            display: block;
+            &:hover {
+                animation: nav-hover 1.5s;
+                -webkit-animation: nav-hover 1.5s;
+                animation-fill-mode: forwards;
+                -webkit-animation-fill-mode: forwards;
+                background-color: @primary;
+            }
+        }
+    }
+}

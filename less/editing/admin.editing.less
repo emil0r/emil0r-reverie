@@ -1,0 +1,135 @@
+@import "../admin.colours.less";
+
+.reverie-area {
+    position: relative;
+    .reverie-area-holder {
+        margin-bottom: 15px;
+    }
+    .reverie-area-panel {
+        display: inline-block !important;
+        padding: 5px 10px;
+        background-color: @gray;
+        color: @white;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .reverie-area-menu {
+        list-style: none;
+        position: absolute;
+        z-index: 99999;
+        padding: 0;
+        top: 15px;
+        left: 5px;
+        display: inline-block;
+        background-color: @gray-light;
+        border: 1px @gray solid;
+        
+        li {
+            padding: 5px;
+        }
+        .add-objects:hover {
+            cursor: pointer;
+            ul.reverie-objects {
+                display: inline-block;
+            }
+        }
+
+        ul.reverie-objects {
+            display: none;
+            position: absolute;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            top: 5px;
+            background-color: @gray-lighter;
+            border: 1px @gray solid;
+            li {
+                padding: 5px;
+            }
+            &:hover {
+                display: inline-block;
+                background-color: @gray;
+                color: @white;
+                cursor: pointer;
+            }
+        }
+    }
+
+
+    // object
+    .reverie-object {
+        margin-bottom: 15px;
+    }
+    .reverie-ready-for-cut {
+        border: 3px dotted @secondary;
+    }
+    .reverie-ready-for-copy {
+        border: 3px dotted @tertiary;
+    }
+    .reverie-object-holder {
+        margin-bottom: 5px;
+    }
+    .reverie-object-panel {
+        position: relative;
+        background-color: @gray-light;
+        padding: 5px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .reverie-object-menu {
+        position: absolute;
+        z-index: 99999;
+        top: 25px;
+        left: 5px;
+        background-color: @gray-lighter;
+        border: 1px black solid;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        width: 150px;
+        li {
+            position: relative;
+            padding: 3px 5px;
+            &:hover {
+                background-color: @gray;
+                color: @white;
+                cursor: pointer;
+            }
+        }
+        .move-object {
+            &:hover .move-object-to {
+                display: block;
+            }
+            .move-object-to {
+                display: none;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                position: absolute;
+                left: 149px;
+                width: 150px;
+                top: 0;
+                background-color: @gray;
+                border: 1px black solid;
+                li {
+                    padding: 3px 5px;
+                    color: @gray-darker;
+                    background-color: @gray-lighter;
+                    &:hover {
+                        background-color: @gray-light;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+    li.reverie-bar {
+        border-top: 1px black solid;
+        padding: 0 !important;
+        margin: 0 !important;
+        height: 0 !important;
+        line-height: 0 !important;
+    }
+}

@@ -1,0 +1,64 @@
+.toolkit
+{
+    width: 100%;
+    border-spacing: 0;
+    color: white;
+    margin-bottom: 10px;
+}
+.toolkit th
+{
+    text-align: left;
+    padding: 10px 5px;
+    font-size: 1.3em;
+    background-color: @primary;
+    color: @black;
+}
+.toolkit th:first-child
+{
+    border-top-left-radius: 15px;
+}
+.toolkit th:last-child
+{
+    border-top-right-radius: 15px;
+}
+.toolkit td
+{
+    background-color: @faded-white;
+    padding: 5px;
+    font-size: 1.1em;
+    border-right: 1px dashed @faded-white;
+    border-bottom: 1px dashed @faded-white;
+}
+.toolkit td:first-child
+{
+    border-left: 1px dashed @faded-white;
+}
+
+.dictionary
+{
+    margin-top: 20px;
+    color: white;
+    border-spacing: 2px;
+    border-collapse: separate;
+    border-color: @gray;
+    td {
+        padding: 5px;
+    }
+    th {
+        background-color: @primary;
+        color: @black;
+        text-align: left;
+        padding: 5px;
+    }
+}
+
+ul.links {
+    margin: 20px 0 0 0;
+    padding: 0;
+    list-style: none;
+    a {
+        &:before {
+            content: "talk: ";
+        }
+    }
+}

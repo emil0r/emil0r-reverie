@@ -1,0 +1,35 @@
+@import "bible.colours.less";
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+html {
+    background: url(/images/subtle_white_feathers.png) repeat top left transparent;
+}
+.container {
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px @black;
+    position: relative;
+    margin: 100px auto;
+    width: 600px;
+    padding: 20px 20px 20px 20px;
+    height: 300px;
+    background-color: fadeout(@royal-blue, 50%);
+    h1, h2 {
+        color: @white;
+        margin-left: 300px;
+    }
+}
+i {
+    font-size: 300px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: -1;
+    color: @primary;
+}
+a {
+    color: @primary;
+    text-decoration: none;
+}

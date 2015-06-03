@@ -1,0 +1,40 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: @white - #111;
+}
+
+#content {
+    margin: 20px auto;
+}
+
+html {
+    background: url(/images/low_contrast_linen.png) repeat top left transparent;
+}
+
+a {
+    color: @primary - #111;
+    &:hover {
+        text-decoration: none;
+        color: @primary - #222;
+    }
+}
+.hidden {
+    display: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: @primary;
+}
+
+a.download {
+    padding: 5px 10px;
+    color: @white;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 20px;
+    #gradient .vertical(@secondary - #222, @secondary);
+}

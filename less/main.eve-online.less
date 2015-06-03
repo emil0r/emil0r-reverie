@@ -1,0 +1,21 @@
+.eve-online {
+    min-height: 800px;
+    background-color: fadeout(@white, 90%);
+    position: relative;
+    font-size: 80px;
+    &:hover {
+        box-shadow: 0 0 15px @white;
+        cursor: pointer;
+        i {
+            text-shadow: 0 0 15px @white;
+        }
+    }
+    i {
+        color: @primary;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -40px;
+        margin-top: -40px;
+    }
+}
