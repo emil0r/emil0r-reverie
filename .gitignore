@@ -10,3 +10,4 @@ pom.xml.asc
 settings.edn
 .emacs.*
 /media
+/resources/public/static/css/main.css
