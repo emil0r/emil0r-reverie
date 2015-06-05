@@ -91,7 +91,7 @@
     ;; this step will set up any necessary migrations
     (load-views-ns 'reverie.sql.objects
                    'emil0r.templates
-                   ;;'emil0r.objects
+                   'emil0r.objects
                    'emil0r.apps
                    'emil0r.endpoints)
 
