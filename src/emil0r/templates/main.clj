@@ -12,9 +12,7 @@
      (common/head page)
      [:body
       [:div#content.container
-       [:div#logo
-        [:a.no-pre {:href "/"}
-         [:img {:src "/static/images/logo.png" :title "emil0r"}]]]
+       (common/logo)
        (common/nav database dev? uri page)
        [:div.container
         [:div.row
@@ -29,9 +27,7 @@
      (common/head page)
      [:body
       [:div#content.container
-       [:div#logo
-        [:a.no-pre {:href "/"}
-         [:img {:src "/static/images/logo.png" :title "emil0r"}]]]
+       (common/logo)
        (common/nav database dev? uri page)
        [:div.container
         [:div.row

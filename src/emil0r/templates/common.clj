@@ -28,6 +28,11 @@
      (map include-css ["/static/css/font-awesome.min.css"
                        "/static/css/main.css"])]))
 
+(defn logo []
+  [:div#logo
+   [:a.no-pre {:href "/"}
+    [:img {:src "/static/images/logo.png" :title "emil0r"}]]])
+
 (defn sidemenu [db dev? uri page]
   (util/sidemenu db dev? uri page))
 
@@ -52,8 +57,9 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>")
-   (map include-js ["/js/jquery-1.10.2.min.js"
-                    "/js/main.js"])
+   (map include-js ["/static/js/jquery-1.10.2.min.js"
+                    ;;"/js/main.js"
+                    ])
    (when dev?
      (map include-js ["/static/js/eyespy.js"
                       "/static/js/init.js"]))))
