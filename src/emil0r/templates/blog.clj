@@ -29,6 +29,8 @@
           area-entry
           area-entries]
          [:div.col-md-3
+          [:a {:href "/feed.atom"}
+           [:img.feed {:src "/static/images/feed.png"}]]
           area-latest
           area-categories]]
         [:div.row

@@ -77,7 +77,7 @@
   (let [settings (component/start (settings/settings settings-path))]
 
     (reset! blog-feed/feed-content
-            {:title "(selfmindead)"
+            {:title "(selfmindead :thoughts)"
              :subtitle "by emil0r"
              :id-key (settings/get settings [:feed :id-key])
              :url "http://emil0r.com"
@@ -110,6 +110,7 @@
     (load-views-ns 'reverie.sql.objects
                    'reverie.modules.blog
                    'reverie.apps.blog
+                   'reverie.endpoints.blog-feed
                    'emil0r.templates
                    'emil0r.objects
                    'emil0r.apps
