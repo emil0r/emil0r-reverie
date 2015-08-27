@@ -23,6 +23,7 @@
        (common/logo)
        (common/nav database dev? uri page)
        [:div.container.blog
+        [:div.blog-title [:span "("] "selfmindead" [:span.blog " :thoughts"] [:span ")"]]
         [:div.row
          [:div.col-md-9
           area-entry

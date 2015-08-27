@@ -26,6 +26,7 @@
                     ;;"migrations_<name-here>" "src/emil0r/objects/migrations/<name-here>/"
                     ;;"migrations" "resources/migrations/postgresql"
                     ;;"migrations_jumbatron" "src/emil0r/objects/migrations/jumbatron/"
+                    "migrations_module_reverie_blog" "resources/migrations/modules/blog/"
                     ))]
     ;; IMPORTANT NOTE: this has destructive side effects in the sense
     ;; of wiping out previously applied migrations.

@@ -1,4 +1,16 @@
 .blog {
+    .blog-title {
+        color: @brand-primary;
+        font-size: 3.5em;
+        > span {
+            color: @white;
+            text-shadow: 0 0 15px @white;
+        }
+        > span.blog {
+            color: @brand-primary;
+            text-shadow: 0 0 15px @brand-primary;
+        }
+    }
     .pagination {
         margin: 0;
         padding: 0;
@@ -18,6 +30,12 @@
         .header {
             margin: 0 0 20px 0;
             font-size: 0.8em;
+        }
+        .og-image {
+            margin-top: 10px;
+        }
+        .author > span {
+            color: @brand-primary;
         }
         .body {
             margin: 20px 0;

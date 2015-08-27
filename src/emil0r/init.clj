@@ -2,6 +2,7 @@
   (:require [clojure.edn :as edn]
             [com.stuartsierra.component :as component]
             [digest :refer [md5]]
+            [emil0r.util :as util]
             [org.httpkit.server :as http-server :refer [run-server]]
             reverie.nsloader
             [reverie.admin :as admin]
@@ -10,6 +11,8 @@
             [reverie.cache.memory :as cache-memory]
             [reverie.cache.sql :as cache-sql]
             [reverie.database.sql :as dbs]
+            [reverie.endpoints.blog-feed :as blog-feed]
+            [reverie.apps.blog :as apps.blog]
             [reverie.logger :as logger]
             [reverie.migrator :as migrator]
             [reverie.migrator.sql :as migrator-sql]
@@ -72,6 +75,18 @@
 (defn init [settings-path]
   ;; read in the settings first
   (let [settings (component/start (settings/settings settings-path))]
+
+    (reset! blog-feed/feed-content
+            {:title "(selfmindead)"
+             :subtitle "by emil0r"
+             :id-key (settings/get settings [:feed :id-key])
+             :url "http://emil0r.com"
+             :blog-url "http://emil0r.com/blog/"
+             :rights "Copyright © Emil Bengtsson"
+             :generator "reverie/blog"})
+
+    (reset! apps.blog/blogger
+            {:image {:class util/img-class}})
 
     ;; start the system
     (reset! system (component/start
