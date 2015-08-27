@@ -7,15 +7,24 @@
             [reverie.downstream :as downstream]
             [reverie.page :as page]))
 
+(defn og-property [property content]
+  [:meta {:property property :content content}])
 
 (defn head [page & [args]]
-  (let [title (cond
-               (nil? (page/parent page)) (str (->> [(page/title page)
+  (let [og-title (downstream/get :blog.og/title)
+        og-description (downstream/get :blog.og/description)
+        og-image (downstream/get :blog.og/image)
+        title (cond
+               (nil? (page/parent page)) (str (->> [og-title
+                                                    (downstream/get :blog/title)
+                                                    (page/title page)
                                                     (page/name page)]
                                                    (remove str/blank?)
                                                    first)
                                               " &mdash; emil0r")
-               :else (str (->> [(downstream/get :app-title)
+               :else (str (->> [og-title
+                                (downstream/get :blog/title)
+                                (downstream/get :app-title)
                                 (page/title page) (page/name page)]
                                (remove str/blank?)
                                first)
@@ -25,6 +34,12 @@
      [:meta {:name "viewport" :content "width=device-width, initial-scale=1, maximum-scale=1"}]
      [:link {:rel "shortcut icon" :href "/static/images/emil0r.png"}]
      [:title title]
+     (if-not (str/blank? og-title)
+       (og-property "og:title" og-title))
+     (if-not (str/blank? og-description)
+       (og-property "og:description" og-description))
+     (if-not (str/blank? og-image)
+       (og-property "og:image" (str "http://emil0r" og-image)))
      (map include-css ["/static/css/font-awesome.min.css"
                        "/static/css/main.css"])]))
 
