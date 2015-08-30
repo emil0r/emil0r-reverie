@@ -39,7 +39,7 @@
      (if-not (str/blank? og-description)
        (og-property "og:description" og-description))
      (if-not (str/blank? og-image)
-       (og-property "og:image" (str "http://emil0r" og-image)))
+       (og-property "og:image" (str "http://emil0r.com" og-image)))
      (map include-css ["/static/css/font-awesome.min.css"
                        "/static/css/main.css"])]))
 
