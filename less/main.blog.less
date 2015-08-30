@@ -29,11 +29,11 @@
 
     .post {
         margin: 0 0 60px 0;
-        h1, h2 {
+        > h1, > h2 {
             margin: 0;
         }
         .header {
-            margin: 0 0 20px 0;
+            margin: 20px 0 20px 0;
             font-size: 0.8em;
         }
         .og-image {
@@ -46,11 +46,11 @@
             margin: 20px 0;
         }
         .categories {
-            margin: 10px 0 0 0;
+            margin: 0;
             padding: 0;
             list-style: none;
             font-size: 1.0em;
-            border-top: 1px fade(@brand-primary, 50%) solid;
+            border-bottom: 1px fade(@brand-primary, 50%) solid;
             &:before {
                 content: "Filed under » ";
             }

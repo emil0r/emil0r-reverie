@@ -54,27 +54,22 @@
 (defn nav [db dev? uri page]
   (util/menu db dev? uri page))
 
+(defn ga-tag-manager [dev?]
+  (if-not dev?
+    "<noscript><iframe src='//www.googletagmanager.com/ns.html?id=GTM-KZ9XB6'
+height='0' width='0' style='display:none;visibility:hidden'></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KZ9XB6');</script>"))
+
 
 (defn footer [page dev?]
   (list
    [:footer.footer-container
     "Powered by " [:a {:href "http://reveriecms.org/"} "reverie/CMS"]]
-   (when-not dev?
-     "<script type=\"text/javascript \" async src=\"http://www.google-analytics.com/ga.js \"></script>
-<script type=\"text/javascript \">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-38019777-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>")
-   (map include-js ["/static/js/jquery-1.10.2.min.js"
-                    ;;"/js/main.js"
-                    ])
+   (map include-js ["/static/js/jquery-1.10.2.min.js"])
    (when dev?
      (map include-js ["/static/js/eyespy.js"
                       "/static/js/init.js"]))))

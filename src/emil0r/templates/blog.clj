@@ -19,6 +19,7 @@
     (html5
      (common/head page)
      [:body
+      (common/ga-tag-manager dev?)
       [:div#content.container
        (common/logo)
        (common/nav database dev? uri page)
