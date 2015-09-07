@@ -3,7 +3,6 @@
             [emil0r.util :as util]
             [hiccup.page :refer [include-css include-js]]
             [reverie.core :refer [area]]
-            [reverie.database :as db]
             [reverie.downstream :as downstream]
             [reverie.page :as page]))
 

@@ -1,11 +1,11 @@
 (ns emil0r.command
     (:require [clojure.string :as str]
               [com.stuartsierra.component :as component]
+              [ez-database.core :as db]
               [honeysql.core :as sql]
               [reverie.auth :as auth]
               reverie.auth.sql
-              [reverie.database :as db]
-              [reverie.database.sql :as dbs]
+              [reverie.database.sql :as db.sql]
               [reverie.migrator :as migrator]
               [reverie.migrator.sql :as migrator-sql]
               reverie.modules.auth
@@ -17,7 +17,7 @@
 
 (defn- get-db [settings]
   (let [db-specs (settings/get settings [:db :specs])]
-    (component/start (dbs/database db-specs))))
+    (component/start (db.sql/database db-specs))))
 
 (defn- read-input [info]
   (println info)

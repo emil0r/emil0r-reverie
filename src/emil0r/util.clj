@@ -1,7 +1,7 @@
 (ns emil0r.util
   (:require [clojure.string :as str]
             [ez-web.sidemenu :as sidemenu]
-            [reverie.database :as db]
+            [reverie.database :as rev.db]
             [reverie.page :as page]))
 
 (def img-class "img-responsive")
@@ -13,11 +13,11 @@
        first))
 
 (defn sidemenu [db dev? uri page]
-  (let [root-children (db/get-children db 1 (not dev?))
+  (let [root-children (rev.db/get-children db 1 (not dev?))
         root (->> root-children
                   (filter #(.startsWith (page/path page) (page/path %)))
                   first)
-        children (db/get-children db (page/serial root) (not dev?))]
+        children (rev.db/get-children db (page/serial root) (not dev?))]
     (sidemenu/sidemenu uri (map (juxt page/path get-title) children) {:holder-attrib {:class "side-menu"}})))
 
 
@@ -31,8 +31,8 @@
 
 
 (defn menu [db dev? uri page]
-  (let [root (db/get-page db 1 (not dev?))
-        children (db/get-children db 1 (not dev?))
+  (let [root (rev.db/get-page db 1 (not dev?))
+        children (rev.db/get-children db 1 (not dev?))
         mc (partial menu-child uri)]
     [:div.nav
      [:ul

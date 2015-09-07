@@ -10,7 +10,7 @@
             [reverie.cache :as cache]
             [reverie.cache.memory :as cache-memory]
             [reverie.cache.sql :as cache-sql]
-            [reverie.database.sql :as dbs]
+            [reverie.database.sql :as db.sql]
             [reverie.endpoints.blog-feed :as blog-feed]
             [reverie.apps.blog :as apps.blog]
             [reverie.logger :as logger]
@@ -33,14 +33,14 @@
                            cache-store site-hash-key-strategy
                            server-options middleware-options
                            run-server stop-server]}]
-  (let [dbs (component/start (dbs/database db-specs))]
+  (let [db (component/start (db.sql/database db-specs))]
     ;; run the migrations for reverie/CMS
-    (->> dbs
+    (->> db
          (migrator-sql/get-migrator)
          (migrator/migrate))
 
     (component/system-map
-     :database dbs
+     :database db
      :settings settings
      :rolemanager (component/using (rm/get-rolemanager)
                                    [:database])
