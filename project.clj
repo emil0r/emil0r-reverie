@@ -2,9 +2,9 @@
   :description "My website"
   :url "http://emil0r.com"
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [reverie-core "0.1.0-SNAPSHOT"]
-                 [reverie-sql "0.1.0-SNAPSHOT"]
-                 [reverie-batteries "0.1.0-SNAPSHOT"]
+                 [reverie-core "0.7.0-SNAPSHOT"]
+                 [reverie-sql "0.7.0-SNAPSHOT"]
+                 [reverie-batteries "0.3.0-SNAPSHOT"]
                  [reverie-blog "0.1.0-SNAPSHOT"]
                  [http-kit "2.1.19"]
                  [org.postgresql/postgresql "9.2-1002-jdbc4"]]
