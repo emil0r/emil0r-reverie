@@ -30,6 +30,11 @@
                           " &mdash; emil0r"))]
     [:head
      [:meta {:charset "UTF-8"}]
+     (if (downstream/get :blog?)
+       [:link {:rel "alternate"
+               :type "application/atom+xml"
+               :title "Atom Feed"
+               :href "http://emil0r.com/feed.atom"}])
      [:meta {:name "viewport" :content "width=device-width, initial-scale=1, maximum-scale=1"}]
      [:link {:rel "shortcut icon" :href "/static/images/emil0r.png"}]
      [:title title]

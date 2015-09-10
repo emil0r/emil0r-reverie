@@ -9,6 +9,7 @@
 
 (defn template-blog [{:keys [uri] :as request} page properties params]
   (downstream/assoc! :reverie.image/class util/img-class)
+  (downstream/assoc! :blog? true)
   (let [{:keys [edit? database dev?]} (get-in request [:reverie])
         area-entry (html (area entry))
         area-entries (html (area entries))
@@ -30,8 +31,6 @@
           area-entry
           area-entries]
          [:div.col-md-3
-          [:a {:href "/feed.atom"}
-           [:img.feed {:src "/static/images/feed.png"}]]
           area-latest
           area-categories]]
         [:div.row
