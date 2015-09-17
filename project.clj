@@ -5,7 +5,7 @@
                  [reverie-core "0.7.0-SNAPSHOT"]
                  [reverie-sql "0.7.0-SNAPSHOT"]
                  [reverie-batteries "0.3.0-SNAPSHOT"]
-                 [reverie-blog "0.1.0-SNAPSHOT"]
+                 [reverie-blog "0.2.0-SNAPSHOT"]
                  [http-kit "2.1.19"]
                  [org.postgresql/postgresql "9.2-1002-jdbc4"]]
   :main emil0r.core

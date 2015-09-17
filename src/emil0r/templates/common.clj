@@ -1,6 +1,7 @@
 (ns emil0r.templates.common
   (:require [clojure.string :as str]
             [emil0r.util :as util]
+            [ez-web.uri :refer [join-uri]]
             [hiccup.page :refer [include-css include-js]]
             [reverie.core :refer [area]]
             [reverie.downstream :as downstream]
@@ -20,14 +21,14 @@
                                                     (page/name page)]
                                                    (remove str/blank?)
                                                    first)
-                                              " &mdash; emil0r")
+                                              " — emil0r")
                :else (str (->> [og-title
                                 (downstream/get :blog/title)
                                 (downstream/get :app-title)
                                 (page/title page) (page/name page)]
                                (remove str/blank?)
                                first)
-                          " &mdash; emil0r"))]
+                          " — emil0r"))]
     [:head
      [:meta {:charset "UTF-8"}]
      (if (downstream/get :blog?)
@@ -38,6 +39,7 @@
      [:meta {:name "viewport" :content "width=device-width, initial-scale=1, maximum-scale=1"}]
      [:link {:rel "shortcut icon" :href "/static/images/emil0r.png"}]
      [:title title]
+     (og-property "og:url" (str "http://emil0r.com" (join-uri (page/path page) (downstream/get :blog/slug))))
      (if-not (str/blank? og-title)
        (og-property "og:title" og-title))
      (if-not (str/blank? og-description)

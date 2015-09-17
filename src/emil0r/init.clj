@@ -11,8 +11,7 @@
             [reverie.cache.memory :as cache-memory]
             [reverie.cache.sql :as cache-sql]
             [reverie.database.sql :as db.sql]
-            [reverie.endpoints.blog-feed :as blog-feed]
-            [reverie.apps.blog :as apps.blog]
+            [reverie.i18n :as i18n]
             [reverie.logger :as logger]
             [reverie.migrator :as migrator]
             [reverie.migrator.sql :as migrator-sql]
@@ -24,7 +23,11 @@
             [reverie.settings :as settings]
             [reverie.site :as site]
             [reverie.system :refer [load-views-ns
-                                    load-views] :as sys]))
+                                    load-views] :as sys]
+
+            ;; blog imports
+            [reverie.endpoints.blog-feed :as blog-feed]
+            [reverie.apps.blog :as apps.blog]))
 
 
 (defn- system-map [{:keys [prod? log db-specs settings
@@ -32,6 +35,7 @@
                            base-dir media-dirs
                            cache-store site-hash-key-strategy
                            server-options middleware-options
+                           i18n-tconfig
                            run-server stop-server]}]
   (let [db (component/start (db.sql/database db-specs))]
     ;; run the migrations for reverie/CMS
@@ -44,9 +48,11 @@
      :settings settings
      :rolemanager (component/using (rm/get-rolemanager)
                                    [:database])
+     :i18n (component/using (i18n/get-i18n prod? i18n-tconfig) [])
      :server (component/using (server/get-server {:server-options server-options
                                                   :run-server run-server
                                                   :stop-server stop-server
+                                                  :middleware-options middleware-options
                                                   :dev? (not prod?)})
                               [:filemanager :site])
      :cachemanager (component/using
@@ -63,7 +69,7 @@
      :system (component/using (sys/get-system)
                               [:database :filemanager :site :scheduler
                                :settings :server :logger
-                               :admin :cachemanager]))))
+                               :admin :cachemanager :i18n]))))
 
 
 (defonce system (atom nil))
@@ -87,6 +93,7 @@
              :id-key (settings/get settings [:feed :id-key])
              :url "http://emil0r.com"
              :blog-url "http://emil0r.com/blog/"
+             :tagging-entity "emil0r.com,2015"
              :rights "Copyright © Emil Bengtsson"
              :generator "reverie/blog"})
 
@@ -99,6 +106,10 @@
                      {:prod? (settings/prod? settings)
                       :log (settings/get settings [:log])
                       :settings settings
+                      :i18n-tconfig (settings/get settings [:i18n :tconfig]
+                                                  {:dictionary {}
+                                                   :dev-mode? (settings/dev? settings)
+                                                   :fallback-locale :en})
                       :db-specs (settings/get settings [:db :specs])
                       :server-options (settings/get settings [:server :options])
                       :middleware-options (settings/get settings [:server :middleware])
@@ -126,6 +137,11 @@
          :database
          (migrator-sql/get-migrator)
          (migrator/migrate))
+
+    ;; load the translations for i18n
+    (->> @system
+         :i18n
+         (i18n/load-i18n!))
 
     ;; start up the scheduler with tasks
     (let [scheduler (-> @system :scheduler)
