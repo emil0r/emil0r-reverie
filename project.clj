@@ -6,6 +6,7 @@
                  [reverie-sql "0.7.0-SNAPSHOT"]
                  [reverie-batteries "0.3.0-SNAPSHOT"]
                  [reverie-blog "0.2.0-SNAPSHOT"]
+                 [reverie-blockade "0.9.3"]
                  [http-kit "2.1.19"]
                  [org.postgresql/postgresql "9.2-1002-jdbc4"]]
   :main emil0r.core

@@ -7,6 +7,7 @@
             reverie.nsloader
             [reverie.admin :as admin]
             [reverie.admin.api.editors :refer [get-edits-task]]
+            [reverie.blockade.middleware :refer [wrap-blockade]]
             [reverie.cache :as cache]
             [reverie.cache.memory :as cache-memory]
             [reverie.cache.sql :as cache-sql]
@@ -52,6 +53,7 @@
      :server (component/using (server/get-server {:server-options server-options
                                                   :run-server run-server
                                                   :stop-server stop-server
+                                                  :extra-handlers [[wrap-blockade {:log? true}]]
                                                   :middleware-options middleware-options
                                                   :dev? (not prod?)})
                               [:filemanager :site])
@@ -127,6 +129,7 @@
                    'reverie.modules.blog
                    'reverie.apps.blog
                    'reverie.endpoints.blog-feed
+                   'reverie.blockade.modules
                    'emil0r.templates
                    'emil0r.objects
                    'emil0r.apps
